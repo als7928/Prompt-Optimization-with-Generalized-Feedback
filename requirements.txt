@@ -1,0 +1,16 @@
+tqdm
+fire
+numpy
+scipy
+datasets
+pytz
+matplotlib
+transformers
+google
+google-api-python-client
+google-generativeai
+fairscale
+sentencepiece
+tiktoken
+python-dotenv
+huggingface_hub
