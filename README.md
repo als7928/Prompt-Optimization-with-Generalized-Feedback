@@ -8,7 +8,6 @@ conda activate arr
 pip install -r requirements.txt
 ```
 
-
 **Note**: Before running, you need to put your OpenAI api key to the .env file
 ```bash
 # create .env
