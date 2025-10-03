@@ -1,12 +1,14 @@
 ## ACL 2025 Submission--Code Appendix
 
 ## Requirements
-
+If you are using conda environment:
 ```bash
-conda create -n acl
-conda activate acl
+conda create -n arr
+conda activate arr
 pip install -r requirements.txt
 ```
+
+
 **Note**: Before running, you need to put your OpenAI api key to the .env file
 ```bash
 # create .env
@@ -25,4 +27,9 @@ huggingface-cli login
 Run
 ```bash
 python src/main.py --config_dir configs/main_penguin.yaml 
+```
+
+Or, if you use uv:
+```bash
+uv run python src/main.py --config_dir configs/main_penguin.yaml 
 ```
