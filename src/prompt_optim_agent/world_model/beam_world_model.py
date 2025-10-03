@@ -20,6 +20,8 @@ class BeamSearchWorldModel(Generic[State, Action]):
         train_batch_size: int = 5,
         test_batch_size: int = 1,
         eval_batch_size: int = 1,
+        mode = "mode",
+        segments_combine_mode = 'mode',
         **kwargs
         ) -> None:
         
@@ -39,12 +41,17 @@ class BeamSearchWorldModel(Generic[State, Action]):
         self.eval_dataloader = self.task.get_dataloader('eval', 
                                                         batch_size=eval_batch_size, 
                                                         shuffle=False)
+
         self.gradient_descent = GradientDescent(task=self.task, 
                                                 logger=self.logger, 
                                                 base_model=base_model, 
                                                 optim_model=optim_model, 
                                                 num_new_prompts = num_new_prompts,
-                                                prompt_length_limit=prompt_length_limit)
+                                                prompt_length_limit=prompt_length_limit,
+                                                mode=mode,
+                                                segments_combine_mode=segments_combine_mode,
+                                                **kwargs)
+        
     def _infinite_data_loader(self, data_loader):
         while True:
             for batch in data_loader:

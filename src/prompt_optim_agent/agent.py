@@ -9,6 +9,7 @@ from .language_model import get_language_model
 
 PRICING_K ={ # last update: 2025/01/10 
     "meta-llama/Llama-3.1-8B-Instruct": {"input": 0.0, "output": 0.0}, 
+    "meta-llama/Llama-3.2-1B-Instruct": {"input": 0.0, "output": 0.0}, 
     "meta-llama/Llama-3.2-3B-Instruct": {"input": 0.0, "output": 0.0}, 
     "meta-llama/Llama-3.3-70B-Instruct": {"input": 0.0, "output": 0.0}, 
     
@@ -94,7 +95,6 @@ class BaseAgent():
         self.logger = create_logger(self.log_dir, f'{exp_name}', log_mode='train')
         self.logger.info(exp_name)
         self.log_vars()
-        
         
         self.base_model = get_language_model(
             base_model_setting["model_type"])(**base_model_setting)

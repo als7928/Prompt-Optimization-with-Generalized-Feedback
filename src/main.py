@@ -52,8 +52,8 @@ def validate_config(config):
     assert isinstance(config['task_setting']['post_instruction'], bool), "post_instruction must be a boolean"
 
     # Base model setting
-    assert config['base_model_setting']['model_type'] in ['openai'], \
-        "base_model.model_type must 'openai'"
+    assert config['base_model_setting']['model_type'] in ['openai', 'llama'], \
+        "base_model.model_type must 'openai' or 'llama'"
     assert config['base_model_setting']['model_name'] is not None, "base_model.model_name must be specified"
     assert isinstance(config['base_model_setting']['temperature'], float), "base_model.temperature must be a float"
     assert config['base_model_setting']['device'] in [None, 'cuda', 'cpu'] or config['base_model_setting']['device'].startswith('cuda:'), \
@@ -62,7 +62,7 @@ def validate_config(config):
         raise ValueError("Please set base model's api key")
 
     # Optim model setting
-    assert config['optim_model_setting']['model_type'] in ['openai'], \
+    assert config['optim_model_setting']['model_type'] in ['openai', 'llama'], \
         "optim_model.model_type must be 'openai'"
     assert config['optim_model_setting']['model_name'] is not None, "optim_model.model_name must be specified"
     assert isinstance(config['optim_model_setting']['temperature'], float), "optim_model.temperature must be a float"

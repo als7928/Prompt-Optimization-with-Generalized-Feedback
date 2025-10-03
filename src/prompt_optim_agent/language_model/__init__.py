@@ -1,8 +1,10 @@
 from . import *
 from .openai_model import OpenAIModel
+from .llama_model import LlamaModel
 
 LANGUAGE_MODELS = {
-    "openai": OpenAIModel
+    "openai": OpenAIModel,
+    "llama": LlamaModel
 }
 
 def get_language_model(language_model_name):

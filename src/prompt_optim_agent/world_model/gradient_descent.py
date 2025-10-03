@@ -25,14 +25,13 @@ class GradientDescent():
         
         assert mode in ['baseline', 'proposed'], f'mode must be one of baseline or proposed, but got {mode}.'
         assert segments_combine_mode in ['random', 'proposed'], f"segments_combine_mode must be one of random or proposed, but got {segments_combine_mode}."
-
+        
         self.mode = mode
         self.segments_combine_mode = segments_combine_mode
         self.task = task
         self.base_model = base_model
         self.optim_model = optim_model
         
-
         self.logger = logger
         self.print_log = print_log if logger is not None else False
         self.num_new_prompts = num_new_prompts
@@ -277,6 +276,7 @@ class GradientDescent():
                 self.logger.info(f"feedback_with_mask : {feedback_with_mask}")
                 self.logger.info(f"candidates_dict : {candidates_dict}")
                 
+                
                 if self.segments_combine_mode == "random":
                     gradient = self.select_general_prompt(gradient_candidates, self.optim_model.get_text_embeddings)
                 elif self.segments_combine_mode == "proposed":
@@ -427,17 +427,6 @@ class GradientDescent():
         return gradient_descent_output
         
     def select_general_prompt(self, candidates, get_text_embeddings, print_log=True):
-            """
-            Generate all possible combinations of segments and select the desired number of combinations.
-            
-            Args:
-                candidates (list): List of segmented prompts (strings). 
-                num_combinations_to_select (int): Number of combinations to randomly select.
-
-            Returns:
-                list: A list of randomly selected combinations, where each combination is a list of segments.
-                list: A list of combined texts for LLM input.
-            """
             num_segments_to_combine = 1
 
             # Transform the segmented prompts into embeddings
