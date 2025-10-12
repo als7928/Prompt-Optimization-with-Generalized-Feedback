@@ -1,10 +1,8 @@
-## ACL 2025 Submission--Code Appendix
+## ProtoPrompt
 
 ## Requirements
-If you are using conda environment:
+
 ```bash
-conda create -n arr
-conda activate arr
 pip install -r requirements.txt
 ```
 
@@ -27,8 +25,7 @@ Run
 ```bash
 python src/main.py --config_dir configs/main_penguin.yaml 
 ```
-
-Or, if you use uv:
+or
 ```bash
 uv run python src/main.py --config_dir configs/main_penguin.yaml 
 ```
